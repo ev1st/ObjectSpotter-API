@@ -1,4 +1,0 @@
-model.predict(
-   source='https://avatars.mds.yandex.net/i?id=8242d24149e1109821cbecf0e9a6bade_l-10534377-images-thumbs&n=33&w=900&h=1200',
-   conf=0.30
-)
