@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Распознавание объектов</title>
+</head>
+<body>
+    <h1> Распознавание объектов </h1>
+    <input type="file" id="fileInput" accept="image/*">
+    <button id="sendBtn"> Распознать </button>
+    <h2 id="result"></h2>
+    <script>
+        document.getElementById("sendBtn").addEventListener("click", async () => {
+            const file = document.getElementById("fileInput").files[0];
+            if (!file) {
+                alert("Сначала выбери картинку");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", file);
+
+            const response = await fetch("/detect", {
+                method: "POST",
+                body: formData
+            });
+            const data = await response.json();
+
+            document.getElementById("result").innerHTML = data.detections
+            .map(d => `${d.label}: ${(d.confidence * 100).toFixed(0)}%`)
+            .join("<br>");
+        });
+    </script>
+</body>
+</html>
