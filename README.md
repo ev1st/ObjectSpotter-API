@@ -15,7 +15,7 @@ Python, FastAPI, Uvicorn, Ultralytics YOLOv8, Pillow
 ## Установка и запуск
 
 ```bash
-pip install -r req.txt
+pip install -r requirements.txt
 python main.py
 ```
 
